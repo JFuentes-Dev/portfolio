@@ -7,22 +7,12 @@ export const siteConfig = {
   // Ruta en /public. Vacío = se muestran las iniciales.
   photo: "/foto.jpg",
   links: {
-    // TODO: agregar LinkedIn. Vacío = se oculta el ícono.
     github: "https://github.com/JFuentes-Dev",
+    // TODO: agregar LinkedIn. Vacío = no se muestra.
     linkedin: "",
+    // Código de este sitio (pie de página).
+    repo: "https://github.com/JFuentes-Dev/portfolio",
   },
-  stack: [
-    "Odoo 18",
-    "Python",
-    "OWL / JavaScript",
-    "PostgreSQL",
-    "REST APIs",
-    "TypeScript",
-    "React",
-    "Next.js",
-    "Tailwind CSS",
-    "Supabase",
-    "Unity",
-    "Git",
-  ],
+  // Zona horaria para el reloj junto a la foto.
+  timeZone: "America/Santiago",
 };

@@ -6,29 +6,30 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const nav = [
-    { href: "#about", label: dict.nav.about },
     { href: "#work", label: dict.nav.work },
     { href: "#contact", label: dict.nav.contact },
   ];
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-5xl items-center justify-between gap-4 px-4 sm:px-6">
-        <Link href={`/${locale}`} className="font-mono text-sm font-semibold tracking-tight">
-          {siteConfig.initials}
-          <span className="text-accent">.</span>
+    <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-md">
+      <div className="mx-auto flex h-14 max-w-[100rem] items-center justify-between gap-6 px-5 sm:px-8">
+        <Link href={`/${locale}`} className="font-display text-xl leading-none tracking-tight">
+          {siteConfig.name}
         </Link>
-        <div className="flex items-center gap-3 sm:gap-6">
+        <div className="flex items-center gap-5 sm:gap-8">
           <nav aria-label="Main">
-            <ul className="flex gap-3 text-sm text-muted sm:gap-6">
-              {nav.map((item) => (
+            <ol className="flex gap-4 sm:gap-7">
+              {nav.map((item, i) => (
                 <li key={item.href}>
-                  <a href={item.href} className="transition-colors hover:text-foreground">
-                    {item.label}
+                  <a href={item.href} className="group flex items-baseline gap-1.5 text-sm">
+                    <span className="label hidden text-muted transition-colors group-hover:text-accent sm:inline">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="transition-colors group-hover:text-accent">{item.label}</span>
                   </a>
                 </li>
               ))}
-            </ul>
+            </ol>
           </nav>
           <LanguageSwitcher locale={locale} label={dict.nav.language} />
         </div>

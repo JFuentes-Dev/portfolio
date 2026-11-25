@@ -1,42 +1,75 @@
 {
   "meta": {
-    "title": "Jorge Fuentes | Desarrollador de software · Odoo",
-    "description": "Portafolio de Jorge Fuentes, desarrollador Odoo y backend en Chile. Módulos a medida, integraciones REST API y productos web, con pasión por los videojuegos y la IA."
+    "title": "Jorge Fuentes | Desarrollador de software · Web, Odoo e IA",
+    "description": "Jorge Fuentes, desarrollador de software en Santiago de Chile: aplicaciones web, sitios, Odoo e inteligencia artificial. Recorre su trabajo en celular y escritorio."
   },
   "nav": {
-    "about": "Sobre mí",
     "work": "Trabajo",
     "contact": "Contacto",
     "language": "Idioma",
     "skipToContent": "Saltar al contenido"
   },
   "hero": {
-    "greeting": "Hola, soy",
-    "role": "Desarrollador de software · Odoo",
-    "tagline": "Desarrollo módulos a medida, integraciones y automatizaciones sobre Odoo, y construyo productos web de punta a punta. En paralelo, creo videojuegos y experimento con IA.",
+    "kicker": "Desarrollador de software — web, backend e IA",
+    "titleStart": "Construyo sistemas que ordenan negocios y webs que los",
+    "titleEmphasis": "venden.",
+    "lead": "Programar es mi vida y el código, mi forma de pensar. Me apasiona la inteligencia artificial y la uso a fondo, todos los días, para diseñar y construir aplicaciones web, sitios y software a medida: de la primera idea al deploy.",
+    "factsLabel": "Datos",
+    "now": "Ahora",
+    "nowValue": "Odoo developer en Sellside",
+    "studies": "Estudios",
+    "studiesValue": "Ing. en Informática, Duoc UC (en curso)",
+    "daily": "Día a día",
+    "dailyValue": "Python, TypeScript, Next.js, Odoo e IA",
+    "base": "Santiago, Chile",
+    "localTime": "hora local",
+    "photoAlt": "Foto de Jorge Fuentes",
     "ctaWork": "Ver mi trabajo",
-    "ctaContact": "Contáctame"
-  },
-  "about": {
-    "title": "Sobre mí",
-    "paragraphs": [
-      "Soy desarrollador Odoo en Sellside, donde construyo módulos personalizados en Odoo 18 con Python, OWL/JavaScript y PostgreSQL, diseño integraciones REST API con otros ERPs y automatizo la sincronización de datos para clientes empresariales.",
-      "Soy Analista Programador Computacional de Duoc UC y hoy curso la continuidad de estudios en Ingeniería en Informática en la misma casa de estudios.",
-      "Fuera del ERP me mueven los videojuegos y la inteligencia artificial: estoy desarrollando desde cero un RPG de fútbol anime en Unity 2D pixel art, y mi meta a largo plazo es formar mi propio estudio de videojuegos."
-    ],
-    "stackTitle": "Tecnologías con las que trabajo",
-    "photoAlt": "Foto de Jorge Fuentes"
+    "copy": "Copiar",
+    "copied": "Copiado"
   },
   "work": {
-    "title": "En lo que he trabajado",
-    "subtitle": "Trabajo reciente, en producción y a un clic.",
+    "label": "Trabajo",
+    "title": "Lo que he construido.",
+    "note": "Algunos sitios usan nombres, logos y fotos de ejemplo para proteger a los negocios.",
+    "sheets": "Proyectos",
+    "prev": "Hoja anterior",
+    "next": "Hoja siguiente",
+    "newSheet": "¿Tu proyecto? Escríbeme",
+    "summary": "Resumen",
+    "ready": "Listo",
+    "sheet": "Hoja",
+    "hint": "← → cambia de hoja",
+    "variants": "Variantes",
+    "notes": "Decisiones de diseño",
+    "noteGoTo": "Ir a la sección",
+    "fonts": "Tipografías",
+    "palette": "Paleta",
+    "builtWith": "Hecho con",
     "visit": "Visitar sitio",
-    "code": "Ver código",
-    "opensInNewTab": "(se abre en una pestaña nueva)"
+    "openDemo": "Abrir demo",
+    "opensInNewTab": "(se abre en una pestaña nueva)",
+    "play": "Recorrido",
+    "pause": "Pausar",
+    "sync": "Sincronizar",
+    "live": "En vivo",
+    "screens": "Capturas",
+    "view": "Vista",
+    "mobile": "Celular",
+    "desktop": "Escritorio",
+    "info": "Ficha",
+    "close": "Cerrar",
+    "loading": "Cargando",
+    "screenshotAlt": "Captura de página completa",
+    "liveTitle": "Sitio en vivo"
   },
   "contact": {
-    "title": "¿Hablamos?",
-    "text": "Estoy abierto a nuevos proyectos y oportunidades, sobre todo en Odoo, backend y desarrollo de videojuegos. Escríbeme.",
-    "cta": "Escríbeme"
+    "title": "¿Tienes un proyecto en mente?",
+    "titleEmphasis": "Conversemos.",
+    "text": "Webs, aplicaciones, software a medida, integraciones con Odoo o IA aplicada a tu negocio.",
+    "elsewhere": "También en",
+    "credit": "Diseñado y programado por Jorge Fuentes.",
+    "code": "Código de este sitio",
+    "backToTop": "Volver arriba"
   }
 }

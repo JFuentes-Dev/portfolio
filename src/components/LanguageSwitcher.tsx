@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Fragment } from "react";
 import { locales, type Locale } from "@/i18n/config";
 
 export function LanguageSwitcher({ locale, label }: { locale: Locale; label: string }) {
@@ -15,22 +16,22 @@ export function LanguageSwitcher({ locale, label }: { locale: Locale; label: str
   };
 
   return (
-    <nav aria-label={label} className="flex rounded-md border border-border p-0.5 text-xs font-medium">
-      {locales.map((target) => {
+    <nav aria-label={label} className="label flex items-center gap-1.5">
+      {locales.map((target, i) => {
         const active = target === locale;
         return (
-          <Link
-            key={target}
-            href={hrefFor(target)}
-            hrefLang={target}
-            lang={target}
-            aria-current={active ? "true" : undefined}
-            className={`rounded px-2 py-1 uppercase transition-colors ${
-              active ? "bg-foreground text-background" : "text-muted hover:text-foreground"
-            }`}
-          >
-            {target}
-          </Link>
+          <Fragment key={target}>
+            {i > 0 && <span aria-hidden="true" className="text-border">/</span>}
+            <Link
+              href={hrefFor(target)}
+              hrefLang={target}
+              lang={target}
+              aria-current={active ? "true" : undefined}
+              className={active ? "text-foreground" : "text-muted transition-colors hover:text-accent"}
+            >
+              {target}
+            </Link>
+          </Fragment>
         );
       })}
     </nav>

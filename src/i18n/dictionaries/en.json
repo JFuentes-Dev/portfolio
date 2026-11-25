@@ -1,42 +1,75 @@
 {
   "meta": {
-    "title": "Jorge Fuentes | Software Developer · Odoo",
-    "description": "Portfolio of Jorge Fuentes, Odoo and backend developer based in Chile. Custom modules, REST API integrations and web products, with a passion for games and AI."
+    "title": "Jorge Fuentes | Software developer · Web, Odoo & AI",
+    "description": "Jorge Fuentes, software developer in Santiago, Chile: web apps, websites, Odoo and artificial intelligence. Browse his work on mobile and desktop."
   },
   "nav": {
-    "about": "About",
     "work": "Work",
     "contact": "Contact",
     "language": "Language",
     "skipToContent": "Skip to content"
   },
   "hero": {
-    "greeting": "Hi, I'm",
-    "role": "Software Developer · Odoo",
-    "tagline": "I build custom Odoo modules, integrations and automations, and ship web products end to end. On the side, I make video games and experiment with AI.",
+    "kicker": "Software developer — web, backend & AI",
+    "titleStart": "I build systems that keep businesses organized, and websites that",
+    "titleEmphasis": "sell.",
+    "lead": "Coding is my life, and code is how I think. I'm passionate about artificial intelligence and use it deeply, every day, to design and build web apps, websites and custom software: from first idea to deploy.",
+    "factsLabel": "Facts",
+    "now": "Now",
+    "nowValue": "Odoo developer at Sellside",
+    "studies": "Studies",
+    "studiesValue": "Computer Engineering, Duoc UC (in progress)",
+    "daily": "Day to day",
+    "dailyValue": "Python, TypeScript, Next.js, Odoo & AI",
+    "base": "Santiago, Chile",
+    "localTime": "local time",
+    "photoAlt": "Photo of Jorge Fuentes",
     "ctaWork": "See my work",
-    "ctaContact": "Get in touch"
-  },
-  "about": {
-    "title": "About me",
-    "paragraphs": [
-      "I'm an Odoo developer at Sellside, where I build custom Odoo 18 modules with Python, OWL/JavaScript and PostgreSQL, design REST API integrations with other ERPs and automate data synchronization for enterprise clients.",
-      "I hold a Computer Programmer Analyst degree from Duoc UC and I'm currently completing a Computer Engineering degree at the same institution.",
-      "Beyond ERPs, I'm driven by video games and artificial intelligence: I'm building an anime football RPG from scratch in Unity 2D pixel art, and my long-term goal is to start my own game studio."
-    ],
-    "stackTitle": "Technologies I work with",
-    "photoAlt": "Photo of Jorge Fuentes"
+    "copy": "Copy",
+    "copied": "Copied"
   },
   "work": {
-    "title": "Recent work",
-    "subtitle": "Live in production, one click away.",
-    "visit": "Visit website",
-    "code": "View code",
-    "opensInNewTab": "(opens in a new tab)"
+    "label": "Work",
+    "title": "What I've built.",
+    "note": "Some sites use placeholder names, logos and photos to protect the businesses.",
+    "sheets": "Projects",
+    "prev": "Previous sheet",
+    "next": "Next sheet",
+    "newSheet": "Your project? Get in touch",
+    "summary": "Summary",
+    "ready": "Ready",
+    "sheet": "Sheet",
+    "hint": "← → to switch sheets",
+    "variants": "Variants",
+    "notes": "Design decisions",
+    "noteGoTo": "Go to section",
+    "fonts": "Typefaces",
+    "palette": "Palette",
+    "builtWith": "Built with",
+    "visit": "Visit site",
+    "openDemo": "Open demo",
+    "opensInNewTab": "(opens in a new tab)",
+    "play": "Tour",
+    "pause": "Pause",
+    "sync": "Sync",
+    "live": "Live",
+    "screens": "Screens",
+    "view": "View",
+    "mobile": "Mobile",
+    "desktop": "Desktop",
+    "info": "Details",
+    "close": "Close",
+    "loading": "Loading",
+    "screenshotAlt": "Full-page screenshot",
+    "liveTitle": "Live site"
   },
   "contact": {
-    "title": "Let's talk",
-    "text": "I'm open to new projects and opportunities, especially in Odoo, backend and game development. Drop me a line.",
-    "cta": "Email me"
+    "title": "Have a project in mind?",
+    "titleEmphasis": "Let's talk.",
+    "text": "Websites, apps, custom software, Odoo integrations or AI applied to your business.",
+    "elsewhere": "Also on",
+    "credit": "Designed and built by Jorge Fuentes.",
+    "code": "Source of this site",
+    "backToTop": "Back to top"
   }
 }
