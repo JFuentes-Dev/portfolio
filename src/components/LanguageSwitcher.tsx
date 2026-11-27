@@ -21,7 +21,7 @@ export function LanguageSwitcher({ locale, label }: { locale: Locale; label: str
         const active = target === locale;
         return (
           <Fragment key={target}>
-            {i > 0 && <span aria-hidden="true" className="text-border">/</span>}
+            {i > 0 && <span aria-hidden="true" className="text-faint">/</span>}
             <Link
               href={hrefFor(target)}
               hrefLang={target}

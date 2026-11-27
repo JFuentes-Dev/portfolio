@@ -4,6 +4,7 @@
     "description": "Jorge Fuentes, software developer in Santiago, Chile: web apps, websites, Odoo and artificial intelligence. Browse his work on mobile and desktop."
   },
   "nav": {
+    "process": "Process",
     "work": "Work",
     "contact": "Contact",
     "language": "Language",
@@ -15,31 +16,30 @@
     "titleEmphasis": "sell.",
     "lead": "Coding is my life, and code is how I think. I'm passionate about artificial intelligence and use it deeply, every day, to design and build web apps, websites and custom software: from first idea to deploy.",
     "factsLabel": "Facts",
-    "now": "Now",
-    "nowValue": "Odoo developer at Sellside",
-    "studies": "Studies",
+    "now": "now",
+    "nowValue": "Odoo developer at Sellside, implementing Odoo ERP for companies across industries",
+    "studies": "studies",
     "studiesValue": "Computer Engineering, Duoc UC (in progress)",
-    "daily": "Day to day",
+    "daily": "stack",
     "dailyValue": "Python, TypeScript, Next.js, Odoo & AI",
     "base": "Santiago, Chile",
     "localTime": "local time",
     "photoAlt": "Photo of Jorge Fuentes",
     "ctaWork": "See my work",
     "copy": "Copy",
-    "copied": "Copied"
+    "copied": "Copied",
+    "motion": "Move with your phone"
   },
   "work": {
-    "label": "Work",
-    "title": "What I've built.",
+    "label": "My work",
+    "title": "My work.",
+    "intro": "Websites, systems and proposals. Pick one from the list or the wall to open its demo.",
+    "list": "Work list",
+    "open": "Open demo",
+    "openSite": "Open live demo",
+    "prev": "Previous project",
+    "next": "Next project",
     "note": "Some sites use placeholder names, logos and photos to protect the businesses.",
-    "sheets": "Projects",
-    "prev": "Previous sheet",
-    "next": "Next sheet",
-    "newSheet": "Your project? Get in touch",
-    "summary": "Summary",
-    "ready": "Ready",
-    "sheet": "Sheet",
-    "hint": "← → to switch sheets",
     "variants": "Variants",
     "notes": "Design decisions",
     "noteGoTo": "Go to section",
@@ -47,7 +47,6 @@
     "palette": "Palette",
     "builtWith": "Built with",
     "visit": "Visit site",
-    "openDemo": "Open demo",
     "opensInNewTab": "(opens in a new tab)",
     "play": "Tour",
     "pause": "Pause",
@@ -61,15 +60,68 @@
     "close": "Close",
     "loading": "Loading",
     "screenshotAlt": "Full-page screenshot",
-    "liveTitle": "Live site"
+    "liveTitle": "Live site",
+    "whatIDo": "What I do"
   },
   "contact": {
     "title": "Have a project in mind?",
     "titleEmphasis": "Let's talk.",
     "text": "Websites, apps, custom software, Odoo integrations or AI applied to your business.",
-    "elsewhere": "Also on",
+    "elsewhere": "social",
     "credit": "Designed and built by Jorge Fuentes.",
     "code": "Source of this site",
-    "backToTop": "Back to top"
+    "backToTop": "Back to top",
+    "folder": "contact",
+    "cmdAbout": "cat services.txt",
+    "cmdFacts": "cat about-me.txt"
+  },
+  "process": {
+    "intro": "Intro",
+    "rail": "Stages",
+    "scroll": "Scroll down",
+    "noWebgl": "Your browser doesn't have WebGL enabled, so you're only seeing the text.",
+    "sections": [
+      {
+        "id": "structure",
+        "kicker": "01 · Structure",
+        "title": "It all starts with the skeleton.",
+        "text": "This is how I build every website, from a simple landing page to a complex platform. Order comes first: what's read first, where people click and how it looks on a phone."
+      },
+      {
+        "id": "layers",
+        "kicker": "02 · Layers",
+        "title": "Three layers, one experience.",
+        "text": "HTML organizes, CSS dresses and JavaScript brings it to life. When a project calls for it, I add a fourth: a 3D scene drawn by the graphics card, like this page."
+      },
+      {
+        "id": "design",
+        "kicker": "03 · Design",
+        "title": "Design with volume.",
+        "text": "Color, type and real light: every element has depth, casts a shadow and reflects its surroundings. Your brand stops being flat."
+      },
+      {
+        "id": "motion",
+        "kicker": "04 · Motion",
+        "title": "It moves with you.",
+        "text": "Scrolling moves the camera, and the mouse (or your phone's gyroscope) tilts the scene. Motion supports the reading instead of covering it."
+      },
+      {
+        "id": "launch",
+        "kicker": "05 · Launch",
+        "title": "Ready to go live.",
+        "text": "Light, fast and built for phones too. And if your business needs it, I connect it to systems like Odoo and to artificial intelligence."
+      }
+    ],
+    "layers": [
+      "HTML · structure",
+      "CSS · design",
+      "JS · interaction"
+    ],
+    "model": {
+      "title1": "Your brand,",
+      "title2": "in 3D.",
+      "button": "Start",
+      "nav": "Contact"
+    }
   }
 }

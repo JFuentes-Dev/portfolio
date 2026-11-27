@@ -1,54 +1,49 @@
 @import "tailwindcss";
 
 /*
- * Identidad editorial: papel, tinta y un solo acento (bermellón).
- * --accent sobre --background cumple contraste AA para texto (≈5:1 en claro).
+ * Identidad: terminal de fósforo ámbar sobre grafito azulado. Un solo acento (ámbar), acero y
+ * hielo para el código del fondo. Solo tema oscuro: el campo 3D está pensado para fondo oscuro.
+ * Contraste sobre --background: foreground ≈ 16:1, muted ≈ 6.8:1, accent ≈ 11:1 (AA de sobra).
+ * --faint es solo decorativo (números de línea, separadores), no para texto que haya que leer.
  */
 :root {
-  --background: #f3efe6;
-  --foreground: #161412;
-  --muted: #625c52;
-  --card: #faf8f3;
-  --border: #d8d1c3;
-  --accent: #b83a16;
-  --accent-foreground: #fdf8f2;
-  /* Acento sobre fondo invertido (bloque de contacto en tinta). */
-  --accent-inverse: #ff7a50;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-    --background: #12110f;
-    --foreground: #ece6da;
-    --muted: #a39b8d;
-    --card: #1a1816;
-    --border: #2f2b26;
-    --accent: #ff7a50;
-    --accent-foreground: #1b0d07;
-    --accent-inverse: #b83a16;
-  }
+  color-scheme: dark;
+  --background: #090b10;
+  --foreground: #e6e9ef;
+  --muted: #8d97a9;
+  --faint: #566275;
+  --card: #0d1118;
+  --raised: #131924;
+  --border: #1e2632;
+  --border-strong: #2e3a4b;
+  --accent: #ffb547;
+  --accent-foreground: #1a1206;
+  --ice: #b8cbef;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
+  --color-faint: var(--faint);
   --color-card: var(--card);
+  --color-raised: var(--raised);
   --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-  --color-accent-inverse: var(--accent-inverse);
-  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-serif), ui-serif, Georgia, serif;
-  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+  --color-ice: var(--ice);
+  --font-sans: var(--font-plex), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-martian), ui-monospace, monospace;
+  --font-mono: var(--font-martian), ui-monospace, monospace;
 }
 
 /*
- * La página son dos bloques de pantalla completa (presentación y libro de trabajo): el scroll se
- * acomoda suavemente al inicio de cada uno. scroll-padding deja espacio para el header fijo (h-14).
+ * La página son dos bloques de pantalla completa (presentación y proyectos): el scroll se acomoda
+ * suavemente al inicio de cada uno. scroll-padding deja espacio para el header fijo (h-14).
  */
 html {
+  background: var(--background);
   scroll-behavior: smooth;
   scroll-snap-type: y proximity;
   scroll-padding-top: 3.5rem;
@@ -60,10 +55,15 @@ html {
   }
 }
 
+/* Cuadrícula tenue de plano técnico: se ve mientras carga el 3D y si el navegador no tiene WebGL. */
 body {
-  background: var(--background);
+  background-color: var(--background);
+  background-image:
+    linear-gradient(to right, rgb(141 151 169 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(141 151 169 / 0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-attachment: fixed;
   color: var(--foreground);
-  font-feature-settings: "ss01", "cv11";
 }
 
 :focus-visible {
@@ -77,31 +77,291 @@ body {
   color: var(--accent-foreground);
 }
 
-/* Etiqueta en versalitas monoespaciadas (números de sección, metadatos). */
+/* Etiqueta monoespaciada en mayúsculas (números de sección, metadatos). */
 @utility label {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   line-height: 1rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
-/* Enlace de texto con subrayado fino que se engrosa al pasar el mouse. */
+/* Enlace de texto con subrayado fino que se vuelve ámbar al pasar el mouse. */
 @utility link-underline {
   text-decoration-line: underline;
   text-decoration-thickness: 1px;
-  text-underline-offset: 0.2em;
-  transition: text-decoration-thickness 150ms, color 150ms;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.3em;
+  transition:
+    text-decoration-color 150ms,
+    color 150ms;
   &:hover {
-    text-decoration-thickness: 2px;
+    text-decoration-color: var(--accent);
     color: var(--accent);
   }
 }
 
-/* Barras de scroll discretas dentro de los dispositivos y la planilla. */
+/* ── Terminal ────────────────────────────────────────────────────────────────────────────────── */
+
+/* Cursor de bloque que parpadea. */
+.caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.1em;
+  margin-left: 0.2em;
+  vertical-align: -0.2em;
+  background: var(--accent);
+  animation: caret-blink 1.1s steps(1, end) infinite;
+}
+
+@keyframes caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Comando que se "escribe" (whoami = 6 caracteres). */
+.typed {
+  display: inline-block;
+  overflow: hidden;
+  width: 0;
+  white-space: nowrap;
+  vertical-align: bottom;
+  animation: typing 0.6s steps(6, end) 0.25s forwards;
+}
+
+@keyframes typing {
+  to {
+    width: 6ch;
+  }
+}
+
+/* Botón principal: ámbar sólido, con resplandor al pasar el mouse. */
+.btn-primary {
+  display: inline-flex;
+  height: 2.75rem;
+  align-items: center;
+  gap: 0.75rem;
+  padding-inline: 1.25rem;
+  background: var(--accent);
+  color: var(--accent-foreground);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  transition:
+    box-shadow 200ms,
+    transform 200ms;
+  &:hover {
+    box-shadow:
+      0 0 0 1px var(--accent),
+      0 10px 40px -8px rgb(255 181 71 / 0.55);
+    transform: translateY(-1px);
+  }
+}
+
+/* Datos del hero como objeto de código: colores de sintaxis sobrios. */
+.tok-kw {
+  color: #8fa3c7;
+  font-style: italic;
+}
+.tok-var {
+  color: var(--foreground);
+}
+.tok-key {
+  color: var(--ice);
+}
+.tok-str {
+  color: #e9c48f;
+}
+.tok-punct {
+  color: var(--faint);
+}
+
+/* Titular que se decodifica (DecodeText): con JS, oculto hasta el primer cuadro revuelto. Si el
+   JS no llega, aparece igual a los 2.5 s. */
+.js [data-decode]:not([data-decoded]) {
+  visibility: hidden;
+  animation: decode-failsafe 0s linear 2.5s forwards;
+}
+
+@keyframes decode-failsafe {
+  to {
+    visibility: visible;
+  }
+}
+
+/* ── Foto ───────────────────────────────────────────────────────────────────────────────────── */
+
+.photo-card-inner {
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  will-change: transform;
+}
+
+/* Tinte acero sobre la foto en blanco y negro, y sombra hacia abajo. */
+.photo-tint::before,
+.photo-tint::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.photo-tint::before {
+  background: #4a6896;
+  mix-blend-mode: color;
+  opacity: 0.55;
+}
+.photo-tint::after {
+  background: linear-gradient(to top, rgb(9 11 16 / 0.7), transparent 50%);
+}
+
+.scanlines {
+  background: repeating-linear-gradient(to bottom, rgb(255 255 255 / 0.05) 0 1px, transparent 1px 3px);
+  mix-blend-mode: overlay;
+}
+
+/* Línea de escaneo ámbar que recorre la foto de arriba abajo. */
+.scan-sweep {
+  background: linear-gradient(to bottom, transparent, rgb(255 181 71 / 0.12) 80%, rgb(255 181 71 / 0.6) 100%);
+  animation: sweep 6s cubic-bezier(0.45, 0, 0.25, 1) 1.2s infinite;
+  top: -4rem;
+}
+
+@keyframes sweep {
+  0% {
+    top: -4rem;
+  }
+  45%,
+  100% {
+    top: 105%;
+  }
+}
+
+.photo-glare {
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 30%), rgb(255 255 255 / 0.18), transparent 55%);
+  mix-blend-mode: soft-light;
+}
+
+/* Esquinas de visor en ámbar. */
+.hud-corners {
+  --c: var(--accent);
+  --l: 18px;
+  --w: 1.5px;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--c), var(--c)) top left / var(--l) var(--w),
+    linear-gradient(var(--c), var(--c)) top left / var(--w) var(--l),
+    linear-gradient(var(--c), var(--c)) top right / var(--l) var(--w),
+    linear-gradient(var(--c), var(--c)) top right / var(--w) var(--l),
+    linear-gradient(var(--c), var(--c)) bottom left / var(--l) var(--w),
+    linear-gradient(var(--c), var(--c)) bottom left / var(--w) var(--l),
+    linear-gradient(var(--c), var(--c)) bottom right / var(--l) var(--w),
+    linear-gradient(var(--c), var(--c)) bottom right / var(--w) var(--l);
+  background-repeat: no-repeat;
+}
+
+/* Indicador de scroll: una línea con un segmento ámbar que baja. */
+.scroll-cue-line {
+  position: relative;
+  display: block;
+  width: 1px;
+  height: 2.5rem;
+  overflow: hidden;
+  background: var(--border-strong);
+}
+.scroll-cue-line::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: -40%;
+  height: 40%;
+  background: var(--accent);
+  animation: cue 1.8s cubic-bezier(0.6, 0, 0.3, 1) infinite;
+}
+
+@keyframes cue {
+  to {
+    top: 100%;
+  }
+}
+
+/* ── Terminal de contacto ────────────────────────────────────────────────────────────────────── */
+
+.terminal {
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: 0.5rem;
+  background: color-mix(in oklab, var(--card) 95%, transparent);
+  box-shadow:
+    0 0 0 1px rgb(0 0 0 / 0.5),
+    0 50px 120px -40px rgb(0 0 0 / 0.95),
+    0 0 90px -40px rgb(255 181 71 / 0.12);
+}
+
+/* Grosor de una placa (la foto): cuatro tiras giradas 90° hacia atrás. Necesitan --thick y --edge
+   en el elemento con preserve-3d que las contiene. */
+.slab-edge {
+  position: absolute;
+  pointer-events: none;
+  background: linear-gradient(to bottom, color-mix(in oklab, var(--edge) 100%, white 12%), var(--edge));
+}
+.slab-edge-r {
+  top: 12px;
+  bottom: 12px;
+  left: calc(100% - 1px);
+  width: var(--thick);
+  transform-origin: 0 50%;
+  transform: rotateY(90deg);
+}
+.slab-edge-l {
+  top: 12px;
+  bottom: 12px;
+  right: calc(100% - 1px);
+  width: var(--thick);
+  transform-origin: 100% 50%;
+  transform: rotateY(-90deg);
+}
+.slab-edge-b {
+  left: 12px;
+  right: 12px;
+  top: calc(100% - 1px);
+  height: var(--thick);
+  transform-origin: 50% 0;
+  transform: rotateX(-90deg);
+}
+.slab-edge-t {
+  left: 12px;
+  right: 12px;
+  bottom: calc(100% - 1px);
+  height: var(--thick);
+  transform-origin: 50% 100%;
+  transform: rotateX(90deg);
+}
+
+/* Fondo de puntos detrás de los dispositivos. */
+.stage-grid {
+  background-color: var(--card);
+  background-image: radial-gradient(circle at 1px 1px, rgb(141 151 169 / 0.16) 1px, transparent 1.5px);
+  background-size: 22px 22px;
+}
+
+/* Desde md, celular y navegador quedan en perspectiva, como una foto de producto; useTilt los
+   inclina con el mouse y los endereza (--tilt → 0) cuando el mouse está encima. */
+@media (min-width: 48rem) {
+  .stage-3d {
+    perspective: 1800px;
+  }
+  .device-phone {
+    transform: rotateX(var(--rx, 0deg)) rotateY(calc(var(--ry, 0deg) + var(--tilt, 0) * 12deg)) translateZ(calc(var(--tilt, 0) * 24px));
+  }
+  .device-browser {
+    transform: rotateX(var(--rx, 0deg)) rotateY(calc(var(--ry, 0deg) - var(--tilt, 0) * 6deg));
+    transform-origin: 30% 50%;
+  }
+}
+
+/* Barras de scroll discretas dentro de los dispositivos y la tabla. */
 .device-scroll {
   scrollbar-width: thin;
-  scrollbar-color: color-mix(in oklab, var(--foreground) 25%, transparent) transparent;
+  scrollbar-color: rgb(141 151 169 / 0.3) transparent;
 }
 
 /* Tira de pestañas: se desliza en horizontal sin mostrar barra. */
@@ -112,17 +372,23 @@ body {
   display: none;
 }
 
-/* Cuadrícula de planilla detrás de los dispositivos: celdas de 6rem × 1.75rem. */
-.sheet-grid {
-  background-color: var(--card);
-  background-image:
-    linear-gradient(to right, color-mix(in oklab, var(--border) 60%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in oklab, var(--border) 60%, transparent) 1px, transparent 1px);
-  background-size: 6rem 1.75rem;
+/* Al cambiar de proyecto, la pantalla gira y entra como una página. */
+@keyframes sheet-in {
+  from {
+    opacity: 0;
+    transform: perspective(1200px) rotateY(-14deg) translateX(20px) translateZ(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-/* Entrada suave al cambiar de hoja o de variante. */
-@keyframes sheet-in {
+@utility animate-sheet-in {
+  animation: sheet-in 460ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes fade-in {
   from {
     opacity: 0;
     transform: translateY(6px);
@@ -133,12 +399,135 @@ body {
   }
 }
 
-@utility animate-sheet-in {
-  animation: sheet-in 320ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+@utility animate-fade-in {
+  animation: fade-in 320ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-sheet-in {
+  .caret,
+  .scan-sweep,
+  .scroll-cue-line::after,
+  .animate-sheet-in,
+  .animate-fade-in {
+    animation: none;
+  }
+  .typed {
+    width: auto;
+    animation: none;
+  }
+}
+
+/* ── Landing 3D (HomeExperience) ─────────────────────────────────────────────────────────────── */
+
+/* Cada sección ocupa una pantalla; el panel de texto va a la izquierda (escritorio) o abajo
+   (celular) y la escena 3D se ve al lado o arriba. En la capa components, así las utilidades
+   (p. ej. max-md:pt-[36svh]) pueden ajustarla. */
+@layer components {
+  .stage-section {
+    display: flex;
+    min-height: calc(100svh - 3.5rem);
+    align-items: flex-end;
+    padding: 1.25rem 1rem;
+    scroll-snap-align: start;
+  }
+
+  @media (min-width: 48rem) {
+    .stage-section {
+      align-items: center;
+      padding: 2rem 2rem;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .stage-section {
+      padding-inline: 3.5rem;
+    }
+  }
+}
+
+/* Panel de texto de cada etapa: vidrio oscuro sobre la escena. */
+.web3d-panel {
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: rgb(9 11 16 / 0.66);
+  backdrop-filter: blur(10px);
+}
+
+@media (min-width: 48rem) {
+  .web3d-panel {
+    padding: 1.75rem;
+    background: rgb(9 11 16 / 0.42);
+  }
+}
+
+/* Demo de un trabajo: diálogo a pantalla completa que entra girando en 3D. */
+.project-dialog {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0.75rem;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  overflow: hidden;
+  perspective: 1800px;
+}
+.project-dialog[open] {
+  display: flex;
+}
+.project-dialog::backdrop {
+  background: rgb(9 11 16 / 0.72);
+  backdrop-filter: blur(6px);
+}
+
+@media (min-width: 40rem) {
+  .project-dialog {
+    padding: 1.5rem 2rem;
+  }
+}
+
+.project-panel {
+  display: flex;
+  width: 100%;
+  max-width: 100rem;
+  height: 100%;
+  margin: auto;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: 14px;
+  background: var(--card);
+  box-shadow:
+    0 0 0 1px rgb(0 0 0 / 0.5),
+    0 60px 140px -40px rgb(0 0 0 / 0.95),
+    0 0 90px -40px rgb(255 181 71 / 0.14);
+  transform-origin: 50% 100%;
+  animation: dialog-in 560ms cubic-bezier(0.2, 0.75, 0.2, 1) both;
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: rotateX(18deg) translateY(70px) translateZ(-120px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Con la demo abierta, la página de atrás no se mueve. */
+html:has(.project-dialog[open]) {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-panel {
     animation: none;
   }
 }

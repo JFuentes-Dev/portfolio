@@ -3,10 +3,9 @@
 import { useState } from "react";
 
 const tones = {
-  // Sobre papel (presentación).
-  plain: "border-border text-muted hover:border-foreground hover:text-foreground",
-  // Sobre el bloque invertido de contacto (fondo tinta, texto papel).
-  inverse: "border-background/50 hover:bg-background hover:text-foreground",
+  plain: "border-border-strong text-muted hover:border-accent hover:text-accent",
+  // Relleno en ámbar (terminal de contacto).
+  accent: "border-accent/60 text-accent hover:bg-accent hover:text-accent-foreground",
 };
 
 export function CopyButton({

@@ -4,7 +4,8 @@
     "description": "Jorge Fuentes, desarrollador de software en Santiago de Chile: aplicaciones web, sitios, Odoo e inteligencia artificial. Recorre su trabajo en celular y escritorio."
   },
   "nav": {
-    "work": "Trabajo",
+    "process": "Proceso",
+    "work": "Trabajos",
     "contact": "Contacto",
     "language": "Idioma",
     "skipToContent": "Saltar al contenido"
@@ -15,31 +16,30 @@
     "titleEmphasis": "venden.",
     "lead": "Programar es mi vida y el código, mi forma de pensar. Me apasiona la inteligencia artificial y la uso a fondo, todos los días, para diseñar y construir aplicaciones web, sitios y software a medida: de la primera idea al deploy.",
     "factsLabel": "Datos",
-    "now": "Ahora",
-    "nowValue": "Odoo developer en Sellside",
-    "studies": "Estudios",
+    "now": "ahora",
+    "nowValue": "Odoo developer en Sellside, implementando Odoo ERP en distintas empresas",
+    "studies": "estudios",
     "studiesValue": "Ing. en Informática, Duoc UC (en curso)",
-    "daily": "Día a día",
+    "daily": "stack",
     "dailyValue": "Python, TypeScript, Next.js, Odoo e IA",
     "base": "Santiago, Chile",
     "localTime": "hora local",
     "photoAlt": "Foto de Jorge Fuentes",
-    "ctaWork": "Ver mi trabajo",
+    "ctaWork": "Ver mis trabajos",
     "copy": "Copiar",
-    "copied": "Copiado"
+    "copied": "Copiado",
+    "motion": "Mover con el celular"
   },
   "work": {
-    "label": "Trabajo",
-    "title": "Lo que he construido.",
+    "label": "Mis trabajos",
+    "title": "Mis trabajos.",
+    "intro": "Sitios, sistemas y propuestas. Elige uno en la lista o en la pared para abrir su demo.",
+    "list": "Lista de trabajos",
+    "open": "Abrir demo",
+    "openSite": "Ver demo en vivo",
+    "prev": "Trabajo anterior",
+    "next": "Trabajo siguiente",
     "note": "Algunos sitios usan nombres, logos y fotos de ejemplo para proteger a los negocios.",
-    "sheets": "Proyectos",
-    "prev": "Hoja anterior",
-    "next": "Hoja siguiente",
-    "newSheet": "¿Tu proyecto? Escríbeme",
-    "summary": "Resumen",
-    "ready": "Listo",
-    "sheet": "Hoja",
-    "hint": "← → cambia de hoja",
     "variants": "Variantes",
     "notes": "Decisiones de diseño",
     "noteGoTo": "Ir a la sección",
@@ -47,7 +47,6 @@
     "palette": "Paleta",
     "builtWith": "Hecho con",
     "visit": "Visitar sitio",
-    "openDemo": "Abrir demo",
     "opensInNewTab": "(se abre en una pestaña nueva)",
     "play": "Recorrido",
     "pause": "Pausar",
@@ -61,15 +60,68 @@
     "close": "Cerrar",
     "loading": "Cargando",
     "screenshotAlt": "Captura de página completa",
-    "liveTitle": "Sitio en vivo"
+    "liveTitle": "Sitio en vivo",
+    "whatIDo": "Qué hago"
   },
   "contact": {
     "title": "¿Tienes un proyecto en mente?",
     "titleEmphasis": "Conversemos.",
     "text": "Webs, aplicaciones, software a medida, integraciones con Odoo o IA aplicada a tu negocio.",
-    "elsewhere": "También en",
+    "elsewhere": "redes",
     "credit": "Diseñado y programado por Jorge Fuentes.",
     "code": "Código de este sitio",
-    "backToTop": "Volver arriba"
+    "backToTop": "Volver arriba",
+    "folder": "contacto",
+    "cmdAbout": "cat servicios.txt",
+    "cmdFacts": "cat sobre-mi.txt"
+  },
+  "process": {
+    "intro": "Inicio",
+    "rail": "Etapas",
+    "scroll": "Desliza hacia abajo",
+    "noWebgl": "Tu navegador no tiene WebGL activo, así que ves solo el texto.",
+    "sections": [
+      {
+        "id": "estructura",
+        "kicker": "01 · Estructura",
+        "title": "Todo parte del esqueleto.",
+        "text": "Así construyo cada web, sea una landing sencilla o una plataforma compleja. Primero el orden: qué se lee primero, dónde se hace clic y cómo se ve en el celular."
+      },
+      {
+        "id": "capas",
+        "kicker": "02 · Capas",
+        "title": "Tres capas, una sola experiencia.",
+        "text": "HTML ordena, CSS viste y JavaScript da vida. Cuando el proyecto lo pide, sumo una cuarta: una escena 3D que se dibuja en la tarjeta gráfica, como esta página."
+      },
+      {
+        "id": "diseno",
+        "kicker": "03 · Diseño",
+        "title": "Un diseño con volumen.",
+        "text": "Color, tipografía y luz de verdad: cada elemento tiene profundidad, proyecta sombra y refleja su entorno. La marca deja de ser plana."
+      },
+      {
+        "id": "movimiento",
+        "kicker": "04 · Movimiento",
+        "title": "Se mueve contigo.",
+        "text": "El scroll mueve la cámara y el mouse (o el giroscopio del celular) inclina la escena. El movimiento acompaña la lectura en vez de taparla."
+      },
+      {
+        "id": "lanzamiento",
+        "kicker": "05 · Lanzamiento",
+        "title": "Lista para salir al mundo.",
+        "text": "Liviana, rápida y pensada también para el celular. Y si tu negocio lo necesita, la conecto con sistemas como Odoo y con inteligencia artificial."
+      }
+    ],
+    "layers": [
+      "HTML · estructura",
+      "CSS · diseño",
+      "JS · interacción"
+    ],
+    "model": {
+      "title1": "Tu marca,",
+      "title2": "en 3D.",
+      "button": "Empezar",
+      "nav": "Contacto"
+    }
   }
 }

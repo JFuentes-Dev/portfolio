@@ -1,13 +1,15 @@
 import type { Locale } from "@/i18n/config";
 import geometry from "./showcase-geometry.json";
 
-// Hojas del libro de trabajo: todo lo que he construido, una pestaña por proyecto.
+// Mis trabajos: todo lo que he construido. En la landing cada uno es una placa en la pared 3D
+// (src/lib/site-builder.ts) y al hacer clic se abre su demo (ProjectDialog).
 //
-// Hay dos tipos de hoja:
+// Hay dos tipos de trabajo:
 // - Visual (`pages`): se ve en celular y escritorio con capturas de página completa en
 //   /public/prototypes/<slug>/ (desktop.jpg a 1280 px y mobile.jpg a 390 px de ancho). Si la página
 //   tiene `liveUrl`, también se puede ver en vivo (iframe).
-// - De datos (`table`): para trabajo que no se ve en una pantalla (ERP, integraciones), una planilla.
+// - De datos (`table`): qué hago y con qué. Sola, para trabajo que no se ve en una pantalla; junto a
+//   `pages` (Sellside), va en la ficha de la demo, al lado de la vista del sitio.
 //
 // showcase-geometry.json lo genera scripts/capture-showcase.mjs: alto de cada página y dónde empieza
 // cada sección en escritorio y en celular. Sirve para sincronizar el scroll sección a sección y para
@@ -31,10 +33,14 @@ export type SheetPage = {
   slug: PageSlug;
   // Solo hace falta si la hoja tiene más de una variante.
   label?: Text;
-  fonts: [string, string];
-  // Fondo, texto, acento, acento 2.
+  // Sin tipografías = sitio que no diseñé yo (p. ej. el de la empresa donde trabajo): la demo no
+  // muestra la ficha de diseño (tipografías y paleta).
+  fonts?: [string, string];
+  // Fondo, texto, acento, acento 2 (el fondo y el texto se usan mientras carga la captura).
   palette: [string, string, string, string];
   liveUrl?: string;
+  // Título de las anotaciones (por defecto, "Decisiones de diseño").
+  notesTitle?: Text;
   notes: SheetNote[];
 };
 
@@ -49,13 +55,15 @@ export type Sheet = {
   // Nombre corto de la pestaña.
   tab: Text;
   title: Text;
-  // Va en el cuadro de nombres, a la izquierda de la barra de fórmulas.
+  // Tipo de proyecto (va sobre el título de la hoja y en el índice).
   kind: Text;
   // Rol y período, si aplica.
   meta?: Text;
-  // Va en la barra de fórmulas.
+  // Resumen bajo el título de la hoja.
   summary: Text;
-  // Color de la pestaña (como las pestañas de color de una planilla).
+  // Aclaración sobre la vista previa (p. ej. que es el sitio de la empresa donde trabajo).
+  preview?: Text;
+  // Color de la pestaña.
   color: string;
   // Sitio publicado.
   url?: string;
@@ -66,9 +74,11 @@ export type Sheet = {
 
 export const pageGeometry = geometry;
 
+// thumb.jpg: el primer pantallazo de desktop.jpg (1280×800) a 960×600, para la placa 3D.
 export const pageImages = (slug: PageSlug) => ({
   desktop: `/prototypes/${slug}/desktop.jpg`,
   mobile: `/prototypes/${slug}/mobile.jpg`,
+  thumb: `/prototypes/${slug}/thumb.jpg`,
 });
 
 const webStack = ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4", "Supabase", "Zod"];
@@ -126,18 +136,48 @@ export const sheets: Sheet[] = [
     id: "sellside",
     tab: { es: "Sellside", en: "Sellside" },
     title: { es: "Sellside", en: "Sellside" },
-    kind: { es: "ERP · Odoo", en: "ERP · Odoo" },
+    kind: { es: "Odoo developer · ERP", en: "Odoo developer · ERP" },
     meta: {
-      es: "Software developer e implementador Odoo · ago. 2025 – hoy",
-      en: "Software developer & Odoo implementer · Aug 2025 – now",
+      es: "Odoo developer · implementación de Odoo ERP · ago. 2025 – hoy",
+      en: "Odoo developer · Odoo ERP implementation · Aug 2025 – now",
     },
     summary: {
-      es: "Módulos a medida en Odoo 18, integraciones REST API con ERPs externos, sincronización automatizada con tareas cron y reportes con lógica de negocio compleja.",
-      en: "Custom Odoo 18 modules, REST API integrations with external ERPs, automated cron-based data sync and reports with complex business logic.",
+      es: "Trabajo en Sellside como Odoo developer: implementamos Odoo ERP en empresas de distintos rubros. Adapto Odoo a cada una con módulos a medida, integraciones con otros sistemas y reportes.",
+      en: "I work at Sellside as an Odoo developer: we implement Odoo ERP for companies across industries. I adapt Odoo to each one with custom modules, integrations with other systems and reports.",
+    },
+    preview: {
+      es: "La vista es el sitio de Sellside, la empresa donde trabajo.",
+      en: "The preview is the website of Sellside, the company I work for.",
     },
     color: "#f39200",
     url: "https://www.sellside.cl",
-    stack: ["Odoo 18", "Python", "OWL / JavaScript", "PostgreSQL"],
+    stack: ["Odoo 18", "Python", "OWL / JavaScript", "PostgreSQL", "REST API"],
+    pages: [
+      {
+        slug: "sellside",
+        palette: ["#ffffff", "#111827", "#f39200", "#000000"],
+        liveUrl: "https://www.sellside.cl",
+        notesTitle: { es: "Sobre Sellside", en: "About Sellside" },
+        notes: [
+          {
+            section: 3,
+            title: { es: "Sistemas de gestión a medida", en: "Custom business management systems" },
+            text: {
+              es: "Es la línea donde trabajo: adaptar Odoo ERP a cada empresa con módulos, integraciones y reportes.",
+              en: "That's the line I work in: adapting Odoo ERP to each company with modules, integrations and reports.",
+            },
+          },
+          {
+            section: 5,
+            title: { es: "Odoo Ready Partner", en: "Odoo Ready Partner" },
+            text: {
+              es: "Sellside es partner de Odoo: desde ahí implementamos Odoo ERP para las empresas que lo contratan.",
+              en: "Sellside is an Odoo partner: that's how we implement Odoo ERP for the companies that hire us.",
+            },
+          },
+        ],
+      },
+    ],
     table: {
       columns: [
         { es: "Área", en: "Area" },
@@ -145,6 +185,14 @@ export const sheets: Sheet[] = [
         { es: "Con qué", en: "With" },
       ],
       rows: [
+        {
+          area: { es: "Implementación", en: "Implementation" },
+          detail: {
+            es: "Implemento Odoo ERP en empresas de distintos rubros y lo adapto a sus procesos.",
+            en: "I implement Odoo ERP for companies across industries and adapt it to their processes.",
+          },
+          tools: "Odoo 18",
+        },
         {
           area: { es: "Módulos a medida", en: "Custom modules" },
           detail: {
@@ -176,14 +224,6 @@ export const sheets: Sheet[] = [
             en: "I build reports with complex business logic.",
           },
           tools: "Python · PostgreSQL",
-        },
-        {
-          area: { es: "Implementación", en: "Implementation" },
-          detail: {
-            es: "Implemento Odoo para clientes empresariales.",
-            en: "I implement Odoo for enterprise clients.",
-          },
-          tools: "Odoo 18",
         },
       ],
     },
